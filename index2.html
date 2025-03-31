@@ -72,6 +72,10 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             border-radius: 8px;
         }
+
+        /* .hight-slides{
+            max-height: 1000px;
+        } */
         
         .slider {
             display: flex;
@@ -89,6 +93,10 @@
             object-fit: cover;
             display: block;
         }
+
+        /* .hight-img{
+            min-height: 100%;
+        } */
         
         .slide-caption {
             position: absolute;
@@ -304,19 +312,31 @@
     <section>
         <p>Мебель в стиле Буль – это не просто функциональные предметы обихода, а сложное культурное явление, отражающее динамику общественных, технологических и эстетических преобразований в Европе эпохи абсолютной монархии. Творчество Андре-Шарля Буля (1642–1732), признанного мастера интарсии и маркетри, оказало огромное влияние на развитие декоративно-прикладного искусства. Его работы стали символом синтеза технического мастерства и художественной изысканности, а техника, разработанная им, трансформировала представление о мебели как о маркере социального статуса и политической власти.</p>
 
-        <div class="slider-container">
+        <div class="slider-container slider1">
             <div class="slider">
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мебель в стиле Буль" class="slide-img">
+                    <img src="./Без заголовка.png" alt="Мебель в стиле Буль" class="slide-img">
                     <div class="slide-caption">Шкаф в стиле Буль, XVIII век</div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Техника маркетри" class="slide-img">
+                    <img src="./экспонат3.png" alt="Техника маркетри" class="slide-img">
                     <div class="slide-caption">Техника маркетри Буля - инкрустация черепаховым панцирем и бронзой</div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Версальский дворец" class="slide-img">
+                    <img src="./versal_castle.jpg" alt="Версальский дворец" class="slide-img">
                     <div class="slide-caption">Интерьер Версальского дворца с мебелью в стиле Буль</div>
+                </div>
+                <div class="slide">
+                    <img src="./bull_1.jpg" alt="Столик в стиле буль" class="slide-img">
+                    <div class="slide-caption">Столик в стиле Буль</div>
+                </div>
+                <div class="slide">
+                    <img src="./furniture_bool_example.jpg" alt="Версальский дворец" class="slide-img">
+                    <div class="slide-caption">Часть интерьера в стиле Буль</div>
+                </div>
+                <div class="slide">
+                    <img src="./Boulle_1.jpg" alt="Столик из Версальского доврца" class="slide-img">
+                    <div class="slide-caption">Пример столика в стиле Буль из Версальского дворца</div>
                 </div>
             </div>
             <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
@@ -385,15 +405,15 @@
 
         <div class="exhibit">
             <h3>1. Шкаф работы Андре-Шарля Буля (Алупкинский музей)</h3>
-            <div class="slider-container">
+            <div class="slider-container hight-slides">
                 <div class="slider" id="slider2">
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Шкаф работы Буля" class="slide-img">
-                        <div class="slide-caption">Шкаф работы Андре-Шарля Буля, вид спереди</div>
+                        <img src="./alupkinskii1.webp" alt="Шкаф в стиле Буль из Алупкинского музея" class="slide-img hight-img">
+                        <div class="slide-caption">Шкаф в стиле Буль</div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Деталь шкафа" class="slide-img">
-                        <div class="slide-caption">Деталь инкрустации шкафа</div>
+                        <img src="./alupkinskii2.webp" alt="Шкаф в стиле Буль из Алупкинского музея" class="slide-img hight-img">
+                        <div class="slide-caption">Шкаф в стиле Буль</div>
                     </div>
                 </div>
                 <button class="slider-btn" id="prevBtn2"><i class="fas fa-chevron-left"></i></button>
@@ -410,14 +430,16 @@
 
         <div class="exhibit">
             <h3>2. Шкаф из Архангельского музея</h3>
-            <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Шкаф из Архангельского музея" style="width:100%; height:auto; border-radius:8px; margin:20px 0;">
+            <div style="text-align: center;">
+            <img src="./экспонат2.png" alt="Шкаф из Архангельского музея" style="max-width: 350px; height:auto; border-radius:8px; margin:20px 0;">
+            </div>
             <p><span class="exhibit-title">Характеристики:</span> Экспонат, представленный в Архангельском музее, выполнен неизвестным автором, но отражает адаптацию «булевской» техники к региональным особенностям. Изделие отличается меньшими размерами (около 107 см) и упрощённым декором, что позволяет предположить его создание для местной аристократии.</p>
             <p><span class="exhibit-title">Техника:</span> В данном случае вместо бронзы использовалась медь, а столешница выполнена из мрамора. Инкрустация включает мотивы, характерные для северных регионов, такие как стилизованные волны и сосновые ветви. Это демонстрирует, как европейская техника комбинируется с местными традициями, создавая уникальный синтез.</p>
         </div>
 
         <div class="exhibit">
             <h3>3. Письменный стол из Музея архитектуры им. Щусева</h3>
-            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Письменный стол" style="width:100%; height:auto; border-radius:8px; margin:20px 0;">
+            <img src="./with_table.jpg" alt="Письменный стол" style="width:100%;border-radius:8px; margin:20px 0;">
             <p><span class="exhibit-title">Характеристики:</span> Начало XVIII века ознаменовалось появлением изделий, предназначенных для более широких слоёв населения. Пример письменного стола из Музея архитектуры им. Щусева иллюстрирует «демократичный» вариант техники Буля. Стол выполнен без массивных бронзовых накладок, акцент делается на текстуре дерева и черепахового панциря.</p>
             <p><span class="exhibit-title">Техника:</span> Применение пихты как более доступного материала указывает на то, что подобные изделия создавались для среднего класса, сохраняя при этом эстетические принципы оригинального стиля.</p>
         </div>
@@ -512,8 +534,8 @@
 
     <script>
         // Слайдер 1
-        const slider = document.querySelector('.slider-container .slider');
-        const slides = document.querySelectorAll('.slider-container .slide');
+        const slider = document.querySelector('.slider1 .slider');
+        const slides = document.querySelectorAll('.slider1 .slide');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const dotsContainer = document.querySelector('.slider-container + .slider-dots');
