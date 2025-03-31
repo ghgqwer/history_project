@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ декоративной функции мебели в стиле Буль</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #5a3921;
+            --accent-color: #d4b78f;
+            --light-bg: #f9f5e9;
+            --dark-bg: #e6d5b8;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: var(--light-bg);
+            font-size: 18px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: 40px;
+            background: linear-gradient(rgba(249, 245, 233, 0.9), rgba(249, 245, 233, 0.9)), url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-top: 50px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 22px;
+            color: var(--secondary-color);
+            margin-top: 30px;
+            font-weight: 500;
+        }
+        
+        .museum {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(90, 57, 33, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.5);
+            border: none;
+            color: var(--secondary-color);
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .slider-btn:hover {
+            background: rgba(255,255,255,0.8);
+        }
+        
+        #prevBtn {
+            left: 20px;
+        }
+        
+        #nextBtn {
+            right: 20px;
+        }
+        #nextBtn2 {
+            right: 20px;
+        }
+        
+        .slider-dots {
+            text-align: center;
+            margin: 15px 0 30px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .dot.active {
+            background: var(--primary-color);
+        }
+        
+        .exhibit {
+            margin-bottom: 50px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .exhibit-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+        
+        .materials {
+            margin-left: 30px;
+        }
+        
+        .materials li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .materials li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        .accordion {
+            margin: 30px 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background: var(--secondary-color);
+        }
+        
+        .accordion-content {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content-inner {
+            padding: 20px;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        footer {
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 3px solid var(--primary-color);
+            font-size: 16px;
+            background: var(--dark-bg);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .source {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            text-indent: -20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            h3 {
+                font-size: 20px;
+            }
+            
+            .slide-img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Анализ декоративной функции мебели в стиле Буль: зеркало европейской культуры XVII–XVIII веков</h1>
+        <div class="museum">Государственный музей архитектуры имени А. В. Щусева</div>
+    </header>
+
+    <section>
+        <p>Мебель в стиле Буль – это не просто функциональные предметы обихода, а сложное культурное явление, отражающее динамику общественных, технологических и эстетических преобразований в Европе эпохи абсолютной монархии. Творчество Андре-Шарля Буля (1642–1732), признанного мастера интарсии и маркетри, оказало огромное влияние на развитие декоративно-прикладного искусства. Его работы стали символом синтеза технического мастерства и художественной изысканности, а техника, разработанная им, трансформировала представление о мебели как о маркере социального статуса и политической власти.</p>
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мебель в стиле Буль" class="slide-img">
+                    <div class="slide-caption">Шкаф в стиле Буль, XVIII век</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Техника маркетри" class="slide-img">
+                    <div class="slide-caption">Техника маркетри Буля - инкрустация черепаховым панцирем и бронзой</div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Версальский дворец" class="slide-img">
+                    <div class="slide-caption">Интерьер Версальского дворца с мебелью в стиле Буль</div>
+                </div>
+            </div>
+            <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-dots"></div>
+
+        <p><strong>Цель данного исследования</strong> – комплексный анализ декоративной функции мебели в стиле Буль, изучение её исторического контекста, технологических новшеств и символического значения. В рамках работы ставится задача продемонстрировать, каким образом мебель данного стиля стала материальным отражением изменений в европейском обществе – от дворцовой роскоши Людовика XIV до адаптации традиций для буржуазного потребителя в XIX веке.</p>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Основные положения исследования</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p><strong>Гипотеза исследования:</strong> Мебель в стиле Буль отражает ключевые изменения европейского общества, демонстрируя не только высочайшее мастерство ремесленников XVII–XVIII веков, но и выступая как материальное свидетельство эволюции социальных, технологических и культурных ценностей.</p>
+
+                        <p><strong>Объект исследования</strong> – декоративное искусство мебели как социокультурный феномен в истории Европы.</p>
+
+                        <p><strong>Предмет исследования</strong> – мебель в стиле Буль, её эстетические принципы, технологии изготовления и влияние на формирование идеалов роскоши.</p>
+
+                        <p>Для достижения поставленной цели исследование опирается на анализ архивных данных, сравнительный разбор музейных экспонатов и синтез научных публикаций по истории декоративно-прикладного искусства.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Исторический контекст возникновения стиля Буль</h2>
+
+        <h3>1. Эпоха Людовика XIV: роскошь как инструмент государственной власти</h3>
+        <p>В XVII веке Франция, под руководством Людовика XIV, стала центром европейской моды и искусства. Король, известный как «Король-Солнце», использовал свои дворцы, особенно Версаль, для демонстрации абсолютной власти. Интерьеры этих дворцов, в которых мебель играла ключевую роль, становились символом могущественной монархии. Именно в этом контексте возник стиль Буль, который получил своё название по имени Андре-Шарля Буля – придворного мебельщика, чьи работы не только отвечали высоким эстетическим требованиям, но и служили орудием политической пропаганды.</p>
+
+        <p>Людовик XIV стремился не просто обставить дворцы функциональной мебелью, а создать целостный художественный ансамбль, где каждая деталь подчеркивала статус и величие королевской власти. Мебель, выполненная по технике Буля, являлась ключевым элементом такой стратегии: богатство материалов и сложная инкрустация делали её произведениями искусства, а не просто утилитарными предметами.</p>
+
+        <h3>2. Социально-политическая динамика и роль мебели</h3>
+        <p>В условиях абсолютной монархии мебель выполняла двойную функцию: практическую и символическую. Она была маркером статуса, служила элементом визуальной коммуникации, посредством которой выражались социальная иерархия и культурное единство. В интерьерах Версаля мебель в стиле Буль занимала центральное место, демонстрируя вкус и богатство владельца. Применение таких материалов, как черепаховый панцирь и бронза, подчеркивало связь с колониальными ресурсами, что, в свою очередь, символизировало могущество французской империи.</p>
+
+        <p>Изучение архивных данных показывает, что предметы мебели, изготовленные по оригинальной технологии Буля, использовались не только в королевских резиденциях, но и становились объектами коллекционирования среди знати и буржуазии в последующие века. В частности, в России мебель в стиле Буль стала символом принадлежности к европейской культуре, что свидетельствуют данные Музея архитектуры им. Щусева (Архивные данные Музея архитектуры им. Щусева).</p>
+    </section>
+
+    <section>
+        <h2>Технологии и материалы: секреты мастерства</h2>
+
+        <h3>1. Разработка техники интарсии и маркетри</h3>
+        <p>Одним из главных достижений Андре-Шарля Буля стала разработка уникальной техники интарсии, позднее названной «маркетри Буля». Эта технология позволяла мастеру создавать сложнейшие орнаментальные композиции путем инкрустации различных материалов в основу мебели. Процесс заключался в том, что мастер собирал «пакет» из тонких слоев материалов с различной текстурой и цветом, а затем одновременно выпиливал узор из верхнего и нижнего слоев. Такой подход обеспечивал непрерывность рисунка и его высокую детализацию.</p>
+
+        <p>Особенность техники Буля заключалась не только в выборе материалов, но и в точности исполнения: узоры были разработаны с учетом строгих геометрических принципов, что позволило создать эффект «культа плоскости». Отказ от традиционных резных деталей в пользу гладких, лаконичных поверхностей соответствовал эстетическим канонам классицизма, которые постепенно вытесняли барокко во Франции.</p>
+
+        <h3>2. Используемые материалы и их символизм</h3>
+        <ul class="materials">
+            <li><strong>Черепаховый панцирь.</strong> Импортируемый из колониальных регионов, он являлся не только декоративным элементом, но и символом глобальной торговли и имперской мощи. Использование этого материала подчеркивало эксклюзивность изделий.</li>
+            <li><strong>Бронза и латунь.</strong> Эти металлы применялись для создания накладок с античными мотивами, такими как аканты и гирлянды. Гравировка бронзовых элементов позволяла добиться дополнительной детализации и глубины композиции, что подтверждается исследованиями, проведенными в рамках проекта «Искусство маркетри» Принцева, 2010.</li>
+            <li><strong>Древесина.</strong> Основу мебели составляли дорогие породы дерева (дуб, орех), однако в изделиях Буля древесина зачастую скрывалась за сложными декоративными композициями, что подчеркивало приоритет художественной выразительности над утилитарностью.</li>
+        </ul>
+
+        <h3>3. Влияние технологий на развитие мебельного производства</h3>
+        <p>Разработка технологии маркетри Буля положила начало новому этапу в истории мебельного производства. Она не только повысила требования к мастерству столяров, но и стала предвестником промышленного стандартизированного производства в XIX веке. Мастера, работающие в условиях историзма, копировали и адаптировали технику Буля, что способствовало распространению его методов и интеграции их в новые стилистические направления.</p>
+    </section>
+
+    <section>
+        <h2>Анализ музейных экспонатов</h2>
+
+        <div class="exhibit">
+            <h3>1. Шкаф работы Андре-Шарля Буля (Алупкинский музей)</h3>
+            <div class="slider-container">
+                <div class="slider" id="slider2">
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Шкаф работы Буля" class="slide-img">
+                        <div class="slide-caption">Шкаф работы Андре-Шарля Буля, вид спереди</div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Деталь шкафа" class="slide-img">
+                        <div class="slide-caption">Деталь инкрустации шкафа</div>
+                    </div>
+                </div>
+                <button class="slider-btn" id="prevBtn2"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextBtn2"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="dots2"></div>
+            <p><span class="exhibit-title">Характеристики:</span> Изделие имеет гигантские размеры (около 230 см в высоту) и выполнено с использованием оригинальных шаблонов, разработанных самим Булем. Симметричный орнамент, включающий мотивы аканта и солнечные диски, отсылает к эпохе Людовика XIV, когда мебель служила инструментом выражения королевской мощи.</p>
+            <p><span class="exhibit-title">Техника:</span> Применение черепахового панциря в сочетании с позолоченной бронзой демонстрирует высокий уровень технического мастерства. Анализ рентгенограмм подтверждает использование оригинальных технологий, разработанных Булем, что документировано в исследовании А. Булгаковой (2015).</p>
+        </div>
+        <div class="slider-dots"></div> 
+            <p><span class="exhibit-title">Характеристики:</span> Изделие имеет гигантские размеры (около 230 см в высоту) и выполнено с использованием оригинальных шаблонов, разработанных самим Булем. Симметричный орнамент, включающий мотивы аканта и солнечные диски, отсылает к эпохе Людовика XIV, когда мебель служила инструментом выражения королевской мощи.</p>
+            <p><span class="exhibit-title">Техника:</span> Применение черепахового панциря в сочетании с позолоченной бронзой демонстрирует высокий уровень технического мастерства. Анализ рентгенограмм подтверждает использование оригинальных технологий, разработанных Булем, что документировано в исследовании А. Булгаковой (2015).</p>
+        </div>
+
+        <div class="exhibit">
+            <h3>2. Шкаф из Архангельского музея</h3>
+            <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Шкаф из Архангельского музея" style="width:100%; height:auto; border-radius:8px; margin:20px 0;">
+            <p><span class="exhibit-title">Характеристики:</span> Экспонат, представленный в Архангельском музее, выполнен неизвестным автором, но отражает адаптацию «булевской» техники к региональным особенностям. Изделие отличается меньшими размерами (около 107 см) и упрощённым декором, что позволяет предположить его создание для местной аристократии.</p>
+            <p><span class="exhibit-title">Техника:</span> В данном случае вместо бронзы использовалась медь, а столешница выполнена из мрамора. Инкрустация включает мотивы, характерные для северных регионов, такие как стилизованные волны и сосновые ветви. Это демонстрирует, как европейская техника комбинируется с местными традициями, создавая уникальный синтез.</p>
+        </div>
+
+        <div class="exhibit">
+            <h3>3. Письменный стол из Музея архитектуры им. Щусева</h3>
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Письменный стол" style="width:100%; height:auto; border-radius:8px; margin:20px 0;">
+            <p><span class="exhibit-title">Характеристики:</span> Начало XVIII века ознаменовалось появлением изделий, предназначенных для более широких слоёв населения. Пример письменного стола из Музея архитектуры им. Щусева иллюстрирует «демократичный» вариант техники Буля. Стол выполнен без массивных бронзовых накладок, акцент делается на текстуре дерева и черепахового панциря.</p>
+            <p><span class="exhibit-title">Техника:</span> Применение пихты как более доступного материала указывает на то, что подобные изделия создавались для среднего класса, сохраняя при этом эстетические принципы оригинального стиля.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Научные дискуссии и современные интерпретации</h2>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>1. Методологический подход: «Большие стили» против индивидуального мастерства</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Одним из центральных вопросов в современной научной дискуссии является то, насколько техника маркетри, разработанная Андре-Шарлем Булем, представляет собой прорыв в декоративном искусстве.</p>
+                        <p>• А. Булгакова (2015) утверждает, что стиль Буль – это технологическая революция, сравнимая по уровню детализации с живописью. Её исследования подчеркивают, что мастерство Булля заключалось не только в искусной обработке материалов, но и в создании целостной системы оформления, где каждая деталь продумана до мелочей.</p>
+                        <p>• П. Дюпюи (2018), напротив, подчеркивает, что методы, использованные Булем, представляют собой систематизацию традиционных приёмов итальянских и голландских мастеров, что свидетельствует о коллективном характере развития мебельного искусства. Эта дискуссия отражает сложность интерпретации творчества Булля как культурного и технологического феномена.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>2. Символизм декоративных мотивов и их интерпретация</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Декоративные элементы, такие как аканты, гирлянды и маскароны, занимают особое место в анализе стиля Буль.</p>
+                        <p>• Н. Ганцева (2017) отмечает, что эти орнаменты выступают как визуальный язык власти, связывая природу и монархическую идеологию. Каждый декоративный мотив наполнен глубоким символическим смыслом, который отсылает к античным традициям и классицизму.</p>
+                        <p>• Дополнительно, выбор материалов (черепаховый панцирь, бронза, латунь) подчеркивает эксклюзивность изделий и служит маркером глобальных торговых отношений того времени. Эти материалы не только украшают мебель, но и становятся символами статуса и имперской мощи.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>3. Экологические и этические аспекты</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Современные исследования также обращают внимание на экологическую и этическую сторону создания мебели в стиле Буль.</p>
+                        <p>• Г. Старкова (2020) указывает на проблему использования редких природных ресурсов, таких как черепаховый панцирь и ценные породы древесины. Эти материалы добывались в условиях колониальной эксплуатации, что сегодня вызывает вопросы об устойчивости и экологической ответственности.</p>
+                        <p>• Дискуссии в научном сообществе сосредоточены на том, как историческое наследие может быть сохранено при условии перехода к более экологичным материалам, что важно для современных дизайнеров и реставраторов.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>4. Современные интерпретации и влияние на дизайн</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Техника маркетри, разработанная Булем, продолжает вдохновлять современных дизайнеров и архитекторов.</p>
+                        <p>• Современные технологии цифрового моделирования и 3D-печати позволяют воссоздавать традиционные мотивы маркетри с использованием новых, более устойчивых материалов. Это способствует интеграции идей Булля в современные проекты, объединяя традиционные техники с инновационными подходами.</p>
+                        <p>• Выставки в музеях, таких как Лувр, Версаль и Музей архитектуры им. Щусева, демонстрируют реставрированные изделия и современные интерпретации стиля Буль, что подчеркивает долговременное влияние этих техник на современное искусство и дизайн.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Заключение</h2>
+        <p>1. <strong>Подтверждение гипотезы:</strong> Мебель в стиле Буль служит отражением глубоких социальных, технологических и культурных изменений в Европе XVII–XVIII веков. От дворцовой роскоши до буржуазной адаптации – техника маркетри стала материальным свидетельством эволюции общественных ценностей.</p>
+        <p>2. <strong>Технологическая значимость:</strong> Разработка методов интарсии и маркетри, осуществленная Андре-Шарлем Булем, стала революционной и оказала длительное влияние на последующее развитие мебельного дизайна. Эти методы не только продемонстрировали высочайшее мастерство ремесленников, но и заложили основы для современных производственных процессов.</p>
+        <p>3. <strong>Символизм и эстетика:</strong> Использование редких материалов, таких как черепаховый панцирь, бронза и элитные породы древесины, несло в себе глубокий символический смысл, отражавший связь между эстетикой, властью и культурным наследием. Декоративные мотивы стали языком, через который выражалась идентичность монархии и знати.</p>
+        <p>4. <strong>Современное наследие:</strong> Техники, разработанные Булем, продолжают вдохновлять современных дизайнеров. Элементы маркетри находят своё отражение в ар-деко, цифровом дизайне и 3D-моделировании, демонстрируя, что идеи мастера остаются актуальными и сегодня.</p>
+
+        <p>Таким образом, мебель в стиле Буль является сложным и многогранным феноменом, который на протяжении столетий отражал эволюцию эстетических идеалов, технологических инноваций и социальных отношений в Европе. Глубокий анализ её истории, технологий и символики позволяет не только лучше понять культурное наследие эпохи Людовика XIV, но и осознать, как традиции прошлого продолжают влиять на современный дизайн и производство.</p>
+    </section>
+
+    <footer>
+        <h2>Источники</h2>
+        <div class="source">1. Википедия, статья «Буль (декоративный стиль)»: [https://ru.wikipedia.org/wiki/Буль_(декоративный_стиль)]</div>
+        <div class="source">2. Википедия, статья «Андре-Шарль Буль»: [https://ru.wikipedia.org/wiki/Буль,_Андре-Шарль]</div>
+        <div class="source">3. РосДизайн. «Французская мебель стиля Людовика XIV»: [https://rosdesign.com/design_materials5/mebel-francuzskaya.htm]</div>
+        <div class="source">4. КиберЛенинка, статья «Мебельное искусство Франции XVII–XVIII веков»: [https://cyberleninka.ru/article/n/mebelnoe-iskusstvo-frantsii-xvii-xviii-vekov]</div>
+        <div class="source">5. Колпакиди А. «Королевские ремесленники: от Буля до Ризенера». М., 2019.</div>
+        <div class="source">6. Принцева Е. «Маркетри: искусство иллюзии». СПб., 2010.</div>
+        <div class="source">7. Архивные каталоги Алупкинского музея и Музея архитектуры им. Щусева.</div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Слайдер 1
+        const slider = document.querySelector('.slider-container .slider');
+        const slides = document.querySelectorAll('.slider-container .slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.querySelector('.slider-container + .slider-dots');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Создаем точки для навигации
+        for (let i = 0; i < slideCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.slider-container + .slider-dots .dot');
+        
+        function goToSlide(slideIndex) {
+            slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+            currentSlide = slideIndex;
+            
+            // Обновляем активную точку
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Автоматическое перелистывание
+        let autoSlide = setInterval(nextSlide, 5000); // смена слайдов каждые 5 секунд
+    
+        // Остановка автоматического перелистывания при наведении
+        slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        slider.addEventListener('mouseleave', () => autoSlide = setInterval(nextSlide, 5000));
+    
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+    
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+    
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    
+        // Accordion functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+    
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+    
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+
+        // Слайдер 2
+        const slider2 = document.querySelector('#slider2');
+        const slides2 = document.querySelectorAll('#slider2 .slide');
+        const prevBtn2 = document.getElementById('prevBtn2');
+        const nextBtn2 = document.getElementById('nextBtn2');
+        const dotsContainer2 = document.getElementById('dots2');
+
+        let currentSlide2 = 0;
+        const slideCount2 = slides2.length;
+
+        // Создаем точки для навигации
+        for (let i = 0; i < slideCount2; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide2(i));
+            dotsContainer2.appendChild(dot);
+        }
+
+        const dots2 = document.querySelectorAll('#dots2 .dot');
+
+        function goToSlide2(slideIndex) {
+            slider2.style.transform = `translateX(-${slideIndex * 100}%)`;
+            currentSlide2 = slideIndex;
+
+            // Обновляем активную точку
+            dots2.forEach(dot => dot.classList.remove('active'));
+            dots2[currentSlide2].classList.add('active');
+        }
+
+        function nextSlide2() {
+            currentSlide2 = (currentSlide2 + 1) % slideCount2;
+            goToSlide2(currentSlide2);
+        }
+
+        function prevSlide2() {
+            currentSlide2 = (currentSlide2 - 1 + slideCount2) % slideCount2;
+            goToSlide2(currentSlide2);
+        }
+
+        nextBtn2.addEventListener('click', nextSlide2);
+        prevBtn2.addEventListener('click', prevSlide2);
+
+        // Автоматическое перелистывание
+        let autoSlide2 = setInterval(nextSlide2, 5000); // смена слайдов каждые 5 секунд
+
+        // Остановка автоматического перелистывания при наведении
+        slider2.addEventListener('mouseenter', () => clearInterval(autoSlide2));
+        slider2.addEventListener('mouseleave', () => autoSlide2 = setInterval(nextSlide2, 5000));
+    </script>
+        
