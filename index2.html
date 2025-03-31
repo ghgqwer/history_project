@@ -434,9 +434,39 @@
 
         <div class="exhibit">
             <h3>2. Шкаф из Архангельского музея</h3>
-            <div style="text-align: center;">
-            <img src="./img/экспонат2.png" alt="Шкаф из Архангельского музея" style="max-width: 350px; height:auto; border-radius:8px; margin:20px 0;">
+            <div class="exhibit-image-container">
+                <img src="./img/экспонат2.png" alt="Шкаф из Архангельского музея" class="exhibit-image">
             </div>
+            
+            <style>
+                .exhibit-image-container {
+                    text-align: center;
+                    margin: 25px 0;
+                }
+                
+                .exhibit-image {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    transition: transform 0.3s ease;
+                }
+                
+                /* Адаптация для разных размеров экранов */
+                @media (min-width: 768px) {
+                    .exhibit-image {
+                        max-width: 350px;
+                    }
+                }
+                
+                /* Эффект при наведении для десктопов */
+                @media (hover: hover) {
+                    .exhibit-image:hover {
+                        transform: scale(1.02);
+                        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+                    }
+                }
+            </style>
             <p><span class="exhibit-title">Характеристики:</span> Экспонат, представленный в Архангельском музее, выполнен неизвестным автором, но отражает адаптацию «булевской» техники к региональным особенностям. Изделие отличается меньшими размерами (около 107 см) и упрощённым декором, что позволяет предположить его создание для местной аристократии.</p>
             <p><span class="exhibit-title">Техника:</span> В данном случае вместо бронзы использовалась медь, а столешница выполнена из мрамора. Инкрустация включает мотивы, характерные для северных регионов, такие как стилизованные волны и сосновые ветви. Это демонстрирует, как европейская техника комбинируется с местными традициями, создавая уникальный синтез.</p>
         </div>
